@@ -1,8 +1,8 @@
-= valuefiles
+# valuefiles
 
 Get/Set/Delete one value per file opening as few file descriptors as possible
 
-== example
+## example
 
 ```js
 var api = require('valuefiles');
@@ -15,17 +15,17 @@ api.set('key',1,function(err,data){
 
 ```
 
-== description
+## description
 
 I use this to keep track of a few key values each in it's own file. This package is not for caching lots of keys and is not fast.
 Its useful for tracking state to resume batch processing after a crash and optimized more for write than read.
 
-== constructor
+## constructor
 
 valuefiles(directory)
  - directory is the directory to store the key value files
 
-== api
+## api
 
 get
  - gets the value of a key
