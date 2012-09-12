@@ -14,7 +14,6 @@ module.exports = function(dir){
   em.writing = {};
 
   var _set = em.set = function(id,value,cb){
-    console.log('set');
     if(em.writing[id]){
       if(!_writeq[id]) _writeq[id] = {value:value,cbs:[]};
       
@@ -70,18 +69,15 @@ module.exports = function(dir){
   };
 
   em.get = function(id,cb){
-    console.log('get',id);
     var z = this;
 
     em.getFd(id,function(err,fd){
-      console.log('get fd ',err,fd);
 
       if(err) return cb(err);
 
       var file = z.idPath(id);
 
       fs.stat(file,function(err,stat){
-        console.log('stat',err,stat);
 
         if(err) return cb(err);
         if(!stat.size) return cb(null);
@@ -131,7 +127,6 @@ module.exports = function(dir){
     var idfile = this.idPath(id);
     var z = this;
 
-    console.log('get fd');
     if(this.fds[idfile]) {
       process.nextTick(function(){
         cb(null,z.fds[idfile]);
@@ -146,7 +141,6 @@ module.exports = function(dir){
     this.fds[idfile] = false;
 
     fs.open(idfile,'a+',0655,function(err,fd){
-        console.log('open ',idfile);
         if(z.fds[idfile] === false) z.fds[idfile] = fd;
         if(_fdq[idfile]) while(_fdq[idfile].length) _fdq[idfile].shift()(err,fd);
     });
@@ -154,7 +148,6 @@ module.exports = function(dir){
 
   em.idPath = function(id){
     var idfile = (new Buffer(''+id)).toString('base64');
-    console.log('IDPATH ',path.join(this.dir,idfile));
     return path.join(this.dir,idfile);
   };
 
