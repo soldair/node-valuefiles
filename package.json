@@ -9,6 +9,9 @@
   "scripts": {
     "test": "tap test/"
   },
+  "devDependencies":{
+    "tap":"*"
+  },
   "repository": "git@github.com:soldair/node-valuefiles.git",
   "author": "Ryan Day",
   "license": "BSD"

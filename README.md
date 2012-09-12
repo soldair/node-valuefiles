@@ -27,16 +27,16 @@ valuefiles(directory)
 
 ## api
 
-get
+get (key,cb)
  - gets the value of a key
 
-set
+set (key,value,cb)
  - sets a key to value
 
-delete
+rm (key,cb)
   - deletes the key file and frees the file descritor
 
-free
+free (key,cb)
   - closes the file descriptor and any pending actions for the key
 
 
