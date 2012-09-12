@@ -82,7 +82,9 @@ module.exports = function(dir){
 
       fs.stat(file,function(err,stat){
         console.log('stat',err,stat);
-        if(err) cb(err);
+
+        if(err) return cb(err);
+        if(!stat.size) return cb(null);
 
         var buf = new Buffer(+stat.size);
         fs.read(fd,buf,0,stat.size,0,function(err,bytes,buf){
@@ -105,7 +107,7 @@ module.exports = function(dir){
     em.free(id);
     delete em.writing[id];
     delete _writeq[id];
-    fs.unlink(idpath,function(err,data){
+    fs.unlink(idfile,function(err,data){
       cb(err,data);
     });
   };
@@ -116,7 +118,7 @@ module.exports = function(dir){
     // if this is done it can break a pending set.
     // all callbacks for those pending sets will get the correct error callbacks.
     // in the future free wwill wait for all pending writes
-
+    var z = this;
     if(z.fds[idfile]) {
       fs.close(z.fds[idfile],cb);
       delete z.fds[idfile];

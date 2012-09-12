@@ -1,6 +1,6 @@
 {
   "name": "valuefiles",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Get/Set/Delete one value per file opening as few file descriptors as possible.",
   "main": "index.js",
   "directories": {
