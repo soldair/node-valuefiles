@@ -35,7 +35,7 @@ module.exports = function(dir){
 
         delete _writeq[id];
 
-        _set(id,_writeq[id].value,function(err,data){
+        _set(id,value,function(err,data){
           while(cbs.length) cbs.shift()(err,data);
         });
       };
