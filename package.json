@@ -1,0 +1,15 @@
+{
+  "name": "valuefiles",
+  "version": "0.0.0",
+  "description": "Get/Set/Delete one value per file opening as few file descriptors as possible.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tap test/"
+  },
+  "repository": "git@github.com:soldair/node-valuefiles.git",
+  "author": "Ryan Day",
+  "license": "BSD"
+}
