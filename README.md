@@ -1,3 +1,6 @@
+
+[![Build Status](https://secure.travis-ci.org/soldair/node-valuefiles.png)](http://travis-ci.org/soldair/node-valuefiles)
+
 # valuefiles
 
 Get/Set/Delete one value per file opening as few file descriptors as possible
